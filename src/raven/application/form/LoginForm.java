@@ -1,8 +1,7 @@
 package raven.application.form;
 
-import DB.Crudd;
+import DB.Métodos;
 import com.formdev.flatlaf.FlatClientProperties;
-import javax.swing.JLabel;
 import net.miginfocom.swing.MigLayout;
 import raven.application.Application;
 
@@ -25,9 +24,6 @@ public class LoginForm extends javax.swing.JPanel {
         cmdLogin.putClientProperty(FlatClientProperties.STYLE, ""
                 + "borderWidth:0;"
                 + "focusWidth:0");
-//        lbError.putClientProperty(FlatClientProperties.STYLE, ""
-//        + "foreground:#e63946;" // Un rojo suave
-//        + "font:-1;");
         txtUser.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese el usuario");
         txtPass.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese la contraseña");
     }
@@ -79,6 +75,7 @@ public class LoginForm extends javax.swing.JPanel {
         cmdLogin.setBackground(new java.awt.Color(132, 132, 255));
         cmdLogin.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         cmdLogin.setText("Iniciar sesión");
+        cmdLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmdLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdLoginActionPerformed(evt);
@@ -116,8 +113,8 @@ public class LoginForm extends javax.swing.JPanel {
         String userIn = txtUser.getText();
         String passIn = new String(txtPass.getPassword());
 
-        Crudd objeto = new Crudd();
-        if (objeto.autenticar(userIn, passIn)) {
+        Métodos objeto = new Métodos();
+        if (objeto.autenticarUsuario(userIn, passIn)) {
             lbError.setVisible(false);
             Application.login();
         } else {

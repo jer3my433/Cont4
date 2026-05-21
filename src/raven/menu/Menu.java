@@ -25,13 +25,11 @@ import raven.menu.mode.ToolBarAccentColor;
 public class Menu extends JPanel {
 
     private final String menuItems[][] = {
-        {"~USUARIO~"},
-        {"Periodo contable"},
         {"~GESTIÓN~"},
         {"Jornalización", "Registrar","Banco de cuentas"},
-        {"Diario Mayor General"},
-        {"Estados financieros"},
+        {"Diario Mayor General", "Libro diario", "Libro mayor"},
         {"Balance de saldos"},
+        {"Estados financieros"},
     };
 
     public boolean isMenuFull() {

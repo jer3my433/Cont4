@@ -1,5 +1,6 @@
 package raven.application.form;
 
+import Ventanas.BalanceDeSaldos;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.util.UIScale;
@@ -16,10 +17,10 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import raven.application.Application;
-import Ventanas.Jornalización;
-import Ventanas.FormInbox;
+import Ventanas.Periodos;
 import Ventanas.BancoDeCuentas;
-import Ventanas.DiarioMayorGeneral;
+import Ventanas.LibroDiario;
+import Ventanas.LibroMayor;
 import raven.menu.Menu;
 import raven.menu.MenuAction;
 
@@ -72,18 +73,24 @@ public class MainForm extends JLayeredPane {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
-                Application.showForm(new FormInbox());
-            } else if (index == 1) {
+                Application.showForm(new Periodos());
                 if (subIndex == 1) {
-                    Application.showForm(new Jornalización());
+                    Application.showForm(new Periodos());
                 } else if (subIndex == 2) {
                     Application.showForm(new BancoDeCuentas());
                 }
+            } else if (index == 1) {
+                if (subIndex == 1) {
+                    Application.showForm(new LibroDiario());
+                } else if (subIndex == 2) {
+                    Application.showForm(new LibroMayor());
+                }
             } else if (index == 2) {
-                Application.showForm(new DiarioMayorGeneral());
+                 Application.showForm(new BalanceDeSaldos());
             } else {
                 action.cancel();
             }
+
         });
     }
 

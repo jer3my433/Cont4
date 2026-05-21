@@ -1,7 +1,6 @@
 package Ventanas;
 
-import DB.Crudd;
-import com.formdev.flatlaf.FlatClientProperties;
+import DB.Métodos;
 import java.awt.Font;
 import javax.swing.table.TableColumn;
 
@@ -14,8 +13,7 @@ public class BancoDeCuentas extends javax.swing.JPanel {
     public BancoDeCuentas() {
         initComponents();
         cargarTablaCuentas();
-//        lb.putClientProperty(FlatClientProperties.STYLE, ""
-//                + "font:$h1.font");
+        TablaCuentas.getTableHeader().getColumnModel().getColumn(1).setPreferredWidth(315);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,6 +30,8 @@ public class BancoDeCuentas extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(206, 221, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1100, 717));
 
+        TablaCuentas.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        TablaCuentas.setForeground(new java.awt.Color(0, 0, 0));
         TablaCuentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -43,8 +43,6 @@ public class BancoDeCuentas extends javax.swing.JPanel {
                 "No.", "Cuenta", "Debe", "Haber", "Perdida", "Ganancia", "Activo", "Pasivo"
             }
         ));
-        TablaCuentas.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
-        TablaCuentas.setForeground(new java.awt.Color(0, 0, 0));
         TablaCuentas.setGridColor(new java.awt.Color(0, 0, 0));
         TablaCuentas.setShowGrid(true);
         TablaCuentas.getTableHeader().setReorderingAllowed(false);
@@ -87,7 +85,7 @@ public class BancoDeCuentas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarTablaCuentas() {
-        Crudd objetoCrudd = new Crudd();
+        Métodos objetoCrudd = new Métodos();
         TablaCuentas.setModel(objetoCrudd.LeerBancCuentas());
         TableColumn columnaNo = TablaCuentas.getColumnModel().getColumn(0);
         columnaNo.setPreferredWidth(35);
@@ -99,7 +97,7 @@ public class BancoDeCuentas extends javax.swing.JPanel {
         TablaCuentas.getTableHeader().setForeground(java.awt.Color.WHITE);
         TablaCuentas.getTableHeader().setFont(new Font("TW Cent MT", Font.BOLD, 12));
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaCuentas;
     private javax.swing.JLabel jLabel3;
